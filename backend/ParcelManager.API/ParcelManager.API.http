@@ -1,0 +1,6 @@
+@ParcelManager.API_HostAddress = http://localhost:5100
+
+GET {{ParcelManager.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
