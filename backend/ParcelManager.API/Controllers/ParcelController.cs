@@ -64,6 +64,26 @@ public class ParcelController : ControllerBase
         return NoContent();
     }
 
+    // PUT: api/parcel/{id}
+    [HttpPut("{id}")]
+    public async Task<IActionResult> UpdateParcel(int id, [FromBody] Parcel parcel)
+    {
+        if (parcel == null)
+            return BadRequest("Parcel cannot be null.");
+
+        var existingParcel = await _context.Parcels.FindAsync(id);
+        if (existingParcel == null)
+            return NotFound();
+
+        existingParcel.Name = parcel.Name;
+        existingParcel.Weight = parcel.Weight;
+        existingParcel.DeliveryAddress = parcel.DeliveryAddress;
+        existingParcel.Status = parcel.Status;
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
+
     // DELETE: api/parcel/{id}
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteParcel(int id)
