@@ -15,8 +15,6 @@ export class ParcelList implements OnInit {
   parcels: Parcel[] = [];
 
   constructor(private parcelService: ParcelService) {
-
-    
   }
 
   ngOnInit(): void {
@@ -25,4 +23,18 @@ export class ParcelList implements OnInit {
       error: (err) => console.error('Failed to load parcels', err)
     });
   }
+
+  deleteParcel(id: number) {
+    if (confirm('Are you sure you want to delete this parcel?')) {
+      this.parcelService.deleteParcel(id).subscribe({
+        next: () => {
+          // Remove the deleted parcel from the list
+          this.parcels = this.parcels.filter((p) => p.id !== id);
+        },
+        error: (err) => console.error('Delete failed', err),
+      });
+    }
+  }
+
+
 }

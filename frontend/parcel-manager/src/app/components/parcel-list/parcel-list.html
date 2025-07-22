@@ -5,7 +5,8 @@
       <th>Name</th>
       <th>Weight (lbs)</th>
       <th>Status</th>
-      <th>Address</th>
+      <th>Delivery Address</th>
+      <th>Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -17,6 +18,11 @@
       <td>{{ parcel.weight }}</td>
       <td>{{ parcel.status }}</td>
       <td>{{ parcel.deliveryAddress }}</td>
+      <td>
+        <button (click)="deleteParcel(parcel.id)" class="btn btn-danger btn-sm">
+          Delete
+        </button>
+      </td>
     </tr>
   </tbody>
 </table>

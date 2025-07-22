@@ -22,4 +22,8 @@ export class ParcelService {
   updateParcel(parcel: Parcel): Observable<Parcel> {
     return this.http.put<Parcel>(`${this.apiUrl}/${parcel.id}`, parcel);
   }
+
+  deleteParcel(id: number): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }
