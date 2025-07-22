@@ -23,6 +23,17 @@ public class ParcelController : ControllerBase
         return await _context.Parcels.ToListAsync();
     }
 
+    // GET: api/parcel/{id}
+    [HttpGet("{id}")]
+    public async Task<ActionResult<Parcel>> GetParcel(int id)
+    {
+        var parcel = await _context.Parcels.FindAsync(id);
+        if (parcel == null)
+            return NotFound();
+
+        return parcel;
+    }
+
     // POST: api/parcel
     [HttpPost]
     public async Task<ActionResult<Parcel>> AddParcel(Parcel parcel)
