@@ -46,4 +46,18 @@ public class ParcelController : ControllerBase
 
         return NoContent();
     }
+
+    // DELETE: api/parcel/{id}
+    [HttpDelete("{id}")]
+    public async Task<IActionResult> DeleteParcel(int id)
+    {
+        var parcel = await _context.Parcels.FindAsync(id);
+        if (parcel == null)
+            return NotFound();
+
+        _context.Parcels.Remove(parcel);
+        await _context.SaveChangesAsync();
+
+        return NoContent();
+    }
 }
