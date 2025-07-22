@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { ParcelService } from '../../services/parcel.service';
 import { CreateParcelDtoModel } from '../../models/parcel.model';
 import { Router } from '@angular/router';
+import { ParcelStatus } from '../../models/parcel.model';
 
 @Component({
   selector: 'app-parcel-form',
@@ -16,7 +17,7 @@ export class ParcelForm {
   parcel: CreateParcelDtoModel = {
     name: '',
     weight: '',
-    status: 'Pending',
+    status: ParcelStatus.Pending,
     deliveryAddress: '',
   };
 

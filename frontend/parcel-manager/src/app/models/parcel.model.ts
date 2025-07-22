@@ -8,3 +8,11 @@ export interface ParcelModel {
 }
 
 export type CreateParcelDtoModel = Omit<ParcelModel, 'id'>;
+
+export enum ParcelStatus {
+  Pending = 'Pending',
+  Shipped = 'Shipped',
+  InTransit = 'In Transit',
+  Delivered = 'Delivered',
+  Cancelled = 'Cancelled',
+}

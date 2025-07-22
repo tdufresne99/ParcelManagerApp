@@ -10,10 +10,10 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngIf="parcels.length === 0">
+    <tr *ngIf="GetParcels().length === 0">
       <td colspan="4" style="text-align: center">No parcels available.</td>
     </tr>
-    <tr *ngFor="let parcel of parcels">
+    <tr *ngFor="let parcel of GetParcels()">
       <td>{{ parcel.name }}</td>
       <td>{{ parcel.weight }}</td>
       <td>
@@ -21,7 +21,7 @@
           [ngModel]="parcel.status"
           (ngModelChange)="onStatusChange(parcel, $event)"
         >
-          <option *ngFor="let status of statusOptions" [value]="status">
+          <option *ngFor="let status of GetStatusOptions()" [value]="status">
             {{ status }}
           </option>
         </select>

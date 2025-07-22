@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ParcelService } from '../../services/parcel.service';
-import { ParcelModel } from '../../models/parcel.model';
+import { ParcelModel, ParcelStatus } from '../../models/parcel.model';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
@@ -13,12 +13,14 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './parcel-list.scss',
 })
 export class ParcelList implements OnInit {
-  parcels: ParcelModel[] = [];
+  private parcels: ParcelModel[] = [];
+  private statusOptions: string[] = Object.values(ParcelStatus);
 
   constructor(private parcelService: ParcelService) {}
 
   ngOnInit(): void {
     this.loadParcels();
+
   }
 
   private loadParcels() {
@@ -47,11 +49,10 @@ export class ParcelList implements OnInit {
     });
   }
 
-  public statusOptions: string[] = [
-    'Pending',
-    'Shipped',
-    'In Transit',
-    'Delivered',
-    'Cancelled',
-  ];
+  public GetParcels(): ParcelModel[] {
+    return this.parcels;
+  }
+  public GetStatusOptions(): string[] {
+    return this.statusOptions;
+  }
 }
