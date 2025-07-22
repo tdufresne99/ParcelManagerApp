@@ -11,12 +11,21 @@
   </thead>
   <tbody>
     <tr *ngIf="parcels.length === 0">
-      <td colspan="4" style="text-align:center;">No parcels available.</td>
+      <td colspan="4" style="text-align: center">No parcels available.</td>
     </tr>
     <tr *ngFor="let parcel of parcels">
       <td>{{ parcel.name }}</td>
       <td>{{ parcel.weight }}</td>
-      <td>{{ parcel.status }}</td>
+      <td>
+        <select
+          [ngModel]="parcel.status"
+          (ngModelChange)="onStatusChange(parcel, $event)"
+        >
+          <option *ngFor="let status of statusOptions" [value]="status">
+            {{ status }}
+          </option>
+        </select>
+      </td>
       <td>{{ parcel.deliveryAddress }}</td>
       <td>
         <button (click)="deleteParcel(parcel.id)" class="btn btn-danger btn-sm">

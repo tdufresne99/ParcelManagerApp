@@ -48,14 +48,17 @@ public class ParcelController : ControllerBase
     }
 
     // PUT: api/parcel/{id}/status
-    [HttpPut("{id}/status")]
-    public async Task<IActionResult> UpdateParcel(int id, string status)
+    [HttpPut("status/{id}")]
+    public async Task<IActionResult> UpdateParcelStatus(int id, [FromBody] UpdateParcelStatusDto dto)
     {
+        if (string.IsNullOrWhiteSpace(dto.Status))
+            return BadRequest("Status cannot be empty.");
+
         var parcel = await _context.Parcels.FindAsync(id);
         if (parcel == null)
             return NotFound();
 
-        parcel.Status = status;
+        parcel.Status = dto.Status;
         await _context.SaveChangesAsync();
 
         return NoContent();

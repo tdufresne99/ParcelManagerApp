@@ -1,30 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ParcelService } from '../../services/parcel.service';
-import { Parcel } from '../../models/parcel.model';
+import { ParcelModel } from '../../models/parcel.model';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-parcel-list',
   standalone: true,
-  imports: [CommonModule, RouterModule],
+  imports: [CommonModule, RouterModule, FormsModule],
   templateUrl: './parcel-list.html',
-  styleUrl: './parcel-list.scss'
+  styleUrl: './parcel-list.scss',
 })
 export class ParcelList implements OnInit {
-  parcels: Parcel[] = [];
+  parcels: ParcelModel[] = [];
 
-  constructor(private parcelService: ParcelService) {
-  }
+  constructor(private parcelService: ParcelService) {}
 
   ngOnInit(): void {
+    this.loadParcels();
+  }
+
+  private loadParcels() {
     this.parcelService.getParcels().subscribe({
-      next: (data) => this.parcels = data,
-      error: (err) => console.error('Failed to load parcels', err)
+      next: (data) => (this.parcels = data),
+      error: (err) => console.error('Failed to load parcels', err),
     });
   }
 
-  deleteParcel(id: number) {
+  public deleteParcel(id: number) {
     if (confirm('Are you sure you want to delete this parcel?')) {
       this.parcelService.deleteParcel(id).subscribe({
         next: () => {
@@ -36,5 +40,18 @@ export class ParcelList implements OnInit {
     }
   }
 
+  onStatusChange(parcel: ParcelModel, newStatus: string) {
+    this.parcelService.updateParcelStatus(parcel.id, newStatus).subscribe({
+      next: () => (parcel.status = newStatus),
+      error: (err) => console.error('Failed to update status', err),
+    });
+  }
 
+  public statusOptions: string[] = [
+    'Pending',
+    'Shipped',
+    'In Transit',
+    'Delivered',
+    'Cancelled',
+  ];
 }

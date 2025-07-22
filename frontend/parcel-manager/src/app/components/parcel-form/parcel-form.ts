@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ParcelService } from '../../services/parcel.service';
-import { CreateParcelDto } from '../../models/parcel.model';
+import { CreateParcelDtoModel } from '../../models/parcel.model';
 import { Router } from '@angular/router';
 
 @Component({
@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 
 export class ParcelForm {
-  parcel: CreateParcelDto = {
+  parcel: CreateParcelDtoModel = {
     name: '',
     weight: '',
     status: 'Pending',

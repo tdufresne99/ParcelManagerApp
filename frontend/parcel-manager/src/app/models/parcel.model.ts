@@ -1,4 +1,5 @@
-export interface Parcel {
+
+export interface ParcelModel {
   id: number;
   name: string;
   weight: string;
@@ -6,4 +7,4 @@ export interface Parcel {
   deliveryAddress: string;
 }
 
-export type CreateParcelDto = Omit<Parcel, 'id'>;
+export type CreateParcelDtoModel = Omit<ParcelModel, 'id'>;
