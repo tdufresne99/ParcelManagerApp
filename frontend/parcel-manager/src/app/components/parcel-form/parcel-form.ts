@@ -1,0 +1,34 @@
+import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { ParcelService } from '../../services/parcel.service';
+import { CreateParcelDto } from '../../models/parcel.model';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-parcel-form',
+  standalone: true,
+  imports: [CommonModule, FormsModule],
+  templateUrl: './parcel-form.html',
+})
+
+export class ParcelForm {
+  parcel: CreateParcelDto = {
+    name: '',
+    weight: '',
+    status: 'Pending',
+    deliveryAddress: '',
+  };
+
+  constructor(private parcelService: ParcelService, private router: Router) {}
+
+  onSubmit() {
+    this.parcelService.createParcel(this.parcel).subscribe({
+      next: (response) => {
+        console.log('Parcel created!', response);
+        this.router.navigate(['/']);
+      },
+      error: (err) => console.error('Failed to create parcel', err),
+    });
+  }
+}

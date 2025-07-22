@@ -1,0 +1,26 @@
+<h2>Parcel List</h2>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Weight (lbs)</th>
+      <th>Status</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngIf="parcels.length === 0">
+      <td colspan="4" style="text-align:center;">No parcels available.</td>
+    </tr>
+    <tr *ngFor="let parcel of parcels">
+      <td>{{ parcel.name }}</td>
+      <td>{{ parcel.weight }}</td>
+      <td>{{ parcel.status }}</td>
+      <td>{{ parcel.deliveryAddress }}</td>
+    </tr>
+  </tbody>
+</table>
+
+<button routerLink="/add" class="btn btn-primary" type="button">
+  Add Parcel
+</button>
