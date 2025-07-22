@@ -11,6 +11,7 @@ import { ParcelStatus } from '../../models/parcel.model';
   standalone: true,
   imports: [CommonModule, FormsModule],
   templateUrl: './parcel-form.html',
+  styleUrl: './parcel-form.scss',
 })
 
 export class ParcelForm {
