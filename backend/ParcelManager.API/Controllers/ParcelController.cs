@@ -54,7 +54,7 @@ public class ParcelController : ControllerBase
         var parcel = await _context.Parcels.FindAsync(id);
         if (parcel == null)
             return NotFound();
-            
+
         parcel.Status = status;
         await _context.SaveChangesAsync();
 
