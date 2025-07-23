@@ -75,6 +75,7 @@ $transition-speed: 0.2s;
       border-radius: 4px;
       font-size: 0.95rem;
       transition: border-color $transition-speed;
+      cursor: pointer;
 
       &:focus {
         outline: none;
