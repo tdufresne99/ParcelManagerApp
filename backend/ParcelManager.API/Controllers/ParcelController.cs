@@ -46,7 +46,8 @@ public class ParcelController : ControllerBase
             Recipient = parcelDto.Recipient,
             DeliveryAddress = parcelDto.DeliveryAddress,
             Status = "Pending",
-            TrackingNumber = TrackingNumberGeneratorUtil.GenerateUniqueTrackingNumber(_context)
+            TrackingNumber = TrackingNumberGeneratorUtil.GenerateUniqueTrackingNumber(_context),
+            DeliveryDate = parcelDto.DeliveryDate
         };
         _context.Parcels.Add(parcel);
         await _context.SaveChangesAsync();
@@ -101,6 +102,7 @@ public class ParcelController : ControllerBase
         existingParcel.Recipient = parcel.Recipient;
         existingParcel.DeliveryAddress = parcel.DeliveryAddress;
         existingParcel.Status = parcel.Status;
+        existingParcel.DeliveryDate = parcel.DeliveryDate;
         await _context.SaveChangesAsync();
 
         return NoContent();

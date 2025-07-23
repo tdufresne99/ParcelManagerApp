@@ -12,4 +12,5 @@ public class Parcel
     public string Recipient { get; set; } = string.Empty;
     public string DeliveryAddress { get; set; } = string.Empty;
     public string TrackingNumber { get; set; } = string.Empty;
+    public DateTime? DeliveryDate { get; set; }
 }
