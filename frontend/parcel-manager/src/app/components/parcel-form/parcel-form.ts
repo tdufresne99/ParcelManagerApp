@@ -18,6 +18,7 @@ export class ParcelForm implements OnInit {
     name: '',
     weight: '',
     status: ParcelStatus.Pending,
+    recipient: '',
     deliveryAddress: '',
   };
 
@@ -39,6 +40,7 @@ export class ParcelForm implements OnInit {
             name: existingParcel.name,
             weight: existingParcel.weight,
             status: existingParcel.status,
+            recipient: existingParcel.recipient,
             deliveryAddress: existingParcel.deliveryAddress,
           };
         },

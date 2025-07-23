@@ -1,4 +1,4 @@
-<h2>{{ parcelId ? 'Edit Parcel' : 'Add a New Parcel' }}</h2>
+<h2>{{ parcelId ? "Edit Parcel" : "Add a New Parcel" }}</h2>
 
 <form (ngSubmit)="onSubmit()" #parcelForm="ngForm">
   <div>
@@ -24,6 +24,17 @@
   </div>
 
   <div>
+    <label for="recipient">Recipient:</label>
+    <input
+      type="text"
+      id="recipient"
+      name="recipient"
+      [(ngModel)]="parcel.recipient"
+      required
+    />
+  </div>
+
+  <div>
     <label for="deliveryAddress">Delivery address:</label>
     <input
       type="text"
@@ -35,11 +46,7 @@
   </div>
 
   <button type="submit" class="btn-submit" [disabled]="parcelForm.invalid">
-    {{ parcelId ? 'Update' : 'Add' }} Parcel
+    {{ parcelId ? "Update" : "Add" }} Parcel
   </button>
-  <button type="button" class="btn-cancel" (click)="onCancel()">
-    Cancel
-  </button>
+  <button type="button" class="btn-cancel" (click)="onCancel()">Cancel</button>
 </form>
-
-

@@ -6,6 +6,7 @@
       <th>Name</th>
       <th>Weight (lbs)</th>
       <th>Status</th>
+      <th>Recipient</th>
       <th>Delivery Address</th>
       <th>Actions</th>
     </tr>
@@ -32,6 +33,7 @@
           </option>
         </select>
       </td>
+      <td>{{ parcel.recipient }}</td>
       <td>{{ parcel.deliveryAddress }}</td>
       <td class="actions">
         <button (click)="editParcel(parcel.id)" class="btn btn-warning btn-sm">

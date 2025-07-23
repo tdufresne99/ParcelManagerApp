@@ -4,6 +4,7 @@ export interface ParcelModel {
   name: string;
   weight: string;
   status: string;
+  recipient: string;
   deliveryAddress: string;
   trackingNumber: string;
 }
