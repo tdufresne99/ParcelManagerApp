@@ -13,7 +13,7 @@
   </div>
 
   <div>
-    <label for="weight">Weight:</label>
+    <label for="weight">Weight (lbs):</label>
     <input
       type="number"
       id="weight"
@@ -34,7 +34,12 @@
     />
   </div>
 
-  <button type="submit" [disabled]="parcelForm.invalid">
+  <button type="submit" class="btn-submit" [disabled]="parcelForm.invalid">
     {{ parcelId ? 'Update' : 'Add' }} Parcel
   </button>
+  <button type="button" class="btn-cancel" (click)="onCancel()">
+    Cancel
+  </button>
 </form>
+
+

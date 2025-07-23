@@ -72,4 +72,8 @@ export class ParcelForm implements OnInit {
       });
     }
   }
+
+  onCancel() {
+    this.router.navigate(['/']);
+  }
 }
