@@ -4,7 +4,7 @@ import { ParcelService } from '../../services/parcel.service';
 import { ParcelModel, ParcelStatus } from '../../models/parcel.model';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
-import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog";
+import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';
 
 @Component({
   selector: 'app-parcel-list',
@@ -16,7 +16,9 @@ import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog";
 export class ParcelList implements OnInit {
   private parcels: ParcelModel[] = [];
   private statusOptions: string[] = Object.values(ParcelStatus);
+  private copyTimeout: ReturnType<typeof setTimeout> | null = null;
 
+  copiedParcelId: number | null = null;
   showConfirmDialog: boolean = false;
   parcelIdToDelete: number | null = null;
 
@@ -83,5 +85,20 @@ export class ParcelList implements OnInit {
   }
   public GetStatusOptions(): string[] {
     return this.statusOptions;
+  }
+
+  copyTrackingNumber(parcel: ParcelModel) {
+    navigator.clipboard.writeText(parcel.trackingNumber).then(() => {
+      if (this.copyTimeout) {
+        clearTimeout(this.copyTimeout);
+      }
+
+      this.copiedParcelId = parcel.id;
+
+      this.copyTimeout = setTimeout(() => {
+        this.copiedParcelId = null;
+        this.copyTimeout = null;
+      }, 2000);
+    });
   }
 }

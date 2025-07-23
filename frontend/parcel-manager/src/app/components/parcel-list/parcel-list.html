@@ -15,7 +15,11 @@
       <td colspan="4" style="text-align: center">No parcels available.</td>
     </tr>
     <tr *ngFor="let parcel of GetParcels()">
-      <td>{{ parcel.trackingNumber }}</td>
+      <td>
+        <span class="tracking-id" (click)="copyTrackingNumber(parcel)">
+          {{ copiedParcelId === parcel.id ? "Copied!" : parcel.trackingNumber }}
+        </span>
+      </td>
       <td>{{ parcel.name }}</td>
       <td>{{ parcel.weight }}</td>
       <td>

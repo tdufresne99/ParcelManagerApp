@@ -40,6 +40,12 @@ $transition-speed: 0.2s;
       border-bottom: none;
     }
 
+    tr {
+      td {
+        height: 3rem;
+      }
+    }
+
     td select {
       padding: 0.4rem;
       border: 1px solid #ccc;
@@ -51,13 +57,6 @@ $transition-speed: 0.2s;
         outline: none;
         border-color: $primary-color;
       }
-    }
-
-    .actions {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-
     }
 
     .btn {
@@ -128,4 +127,13 @@ $transition-speed: 0.2s;
       background-color: darken($primary-color, 8%);
     }
   }
+
+  .tracking-id {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.tracking-id::selection {
+  background: transparent;
+}
 }
