@@ -24,7 +24,7 @@ export class ParcelForm implements OnInit {
     status: ParcelStatus.Pending,
     recipient: '',
     deliveryAddress: '',
-    deliveryDate: ''
+    deliveryDate: '',
   };
 
   constructor(
@@ -49,7 +49,7 @@ export class ParcelForm implements OnInit {
             status: existingParcel.status,
             recipient: existingParcel.recipient,
             deliveryAddress: existingParcel.deliveryAddress,
-            deliveryDate: existingParcel.deliveryDate,
+            deliveryDate: this.formatDateToInput(existingParcel.deliveryDate),
           };
         },
         error: (err) => {
@@ -63,9 +63,18 @@ export class ParcelForm implements OnInit {
     }
   }
 
+  formatDateToInput(date: string): string {
+    const d = new Date(date);
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`; // ex: "2025-07-26"
+  }
+
   onSubmit() {
     if (this.parcelId) {
       // Update
+      console.log('Updating parcel:', this.parcel);
       this.parcelService.updateParcel(this.parcelId, this.parcel).subscribe({
         next: () => {
           console.log('Parcel updated!');
@@ -75,11 +84,14 @@ export class ParcelForm implements OnInit {
       });
     } else {
       // Create
+      console.log('Creating new parcel:', this.parcel);
       this.parcelService.createParcel(this.parcel).subscribe({
         next: () => {
           console.log('Parcel created!');
           this.router.navigate(['/']).then(() => {
-            this.parcelService.setSuccessMessage('Parcel created successfully!');
+            this.parcelService.setSuccessMessage(
+              'Parcel created successfully!'
+            );
           });
         },
         error: (err) => console.error('Failed to create parcel', err),
