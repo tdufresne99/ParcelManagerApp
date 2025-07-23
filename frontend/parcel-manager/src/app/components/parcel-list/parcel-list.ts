@@ -42,6 +42,11 @@ export class ParcelList implements OnInit {
     }
   }
 
+  public editParcel(parcelId: number) {
+    // Navigate to the update form with the parcel ID
+    window.location.href = `/update/${parcelId}`;
+  }
+
   onStatusChange(parcel: ParcelModel, newStatus: string) {
     this.parcelService.updateParcelStatus(parcel.id, newStatus).subscribe({
       next: () => (parcel.status = newStatus),

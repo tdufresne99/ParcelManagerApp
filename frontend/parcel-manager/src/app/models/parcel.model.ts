@@ -7,7 +7,7 @@ export interface ParcelModel {
   deliveryAddress: string;
 }
 
-export type CreateParcelDtoModel = Omit<ParcelModel, 'id'>;
+export type ParcelDtoModel = Omit<ParcelModel, 'id'>;
 
 export enum ParcelStatus {
   Pending = 'Pending',

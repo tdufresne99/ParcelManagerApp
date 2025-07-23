@@ -1,4 +1,4 @@
-<h2>Add New Parcel</h2>
+<h2>{{ parcelId ? 'Edit Parcel' : 'Add a New Parcel' }}</h2>
 
 <form (ngSubmit)="onSubmit()" #parcelForm="ngForm">
   <div>
@@ -34,5 +34,7 @@
     />
   </div>
 
-  <button type="submit" [disabled]="parcelForm.invalid">Create Parcel</button>
+  <button type="submit" [disabled]="parcelForm.invalid">
+    {{ parcelId ? 'Update' : 'Add' }} Parcel
+  </button>
 </form>

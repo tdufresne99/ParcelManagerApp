@@ -4,5 +4,6 @@ import { ParcelForm } from './components/parcel-form/parcel-form';
 
 export const routes: Routes = [
   { path: '', component: ParcelList },
-  { path: 'add', component: ParcelForm }
+  { path: 'add', component: ParcelForm },
+  { path: 'update/:id', component: ParcelForm }
 ];

@@ -27,9 +27,12 @@
         </select>
       </td>
       <td>{{ parcel.deliveryAddress }}</td>
-      <td>
+      <td class="actions">
         <button (click)="deleteParcel(parcel.id)" class="btn btn-danger btn-sm">
           Delete
+        </button>
+        <button (click)="editParcel(parcel.id)" class="btn btn-warning btn-sm">
+          Edit
         </button>
       </td>
     </tr>

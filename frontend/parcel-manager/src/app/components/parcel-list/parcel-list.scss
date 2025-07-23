@@ -30,7 +30,7 @@ $transition-speed: 0.2s;
     th,
     td {
       padding: 0.75rem 1rem;
-      text-align: left;
+      text-align: center;
       border-bottom: 1px solid $light-gray;
     }
 
@@ -57,6 +57,13 @@ $transition-speed: 0.2s;
       }
     }
 
+    .actions {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+
+    }
+
     .btn {
       padding: 0.4rem 0.8rem;
       border: none;
@@ -74,6 +81,15 @@ $transition-speed: 0.2s;
         }
       }
 
+      &.btn-warning {
+        background-color: $light-gray;
+        color: black;
+
+        &:hover {
+          background-color: darken($light-gray, 8%);
+        }
+      }
+
       &.btn-primary {
         background-color: $accent-color;
         color: white;
@@ -86,6 +102,8 @@ $transition-speed: 0.2s;
       &.btn-sm {
         font-size: 0.85rem;
         padding: 0.3rem 0.6rem;
+        margin: 0.3rem 0.2rem;
+        width: 88px;
       }
     }
 
