@@ -143,4 +143,22 @@ public class ParcelController : ControllerBase
 
         return NoContent();
     }
+
+
+    // DELETE: api/parcel/clear
+    /// <summary>
+    /// WARNING:Delete all parcels from the database. Use with caution.
+    /// This endpoint is intended for development and testing purposes only.
+    /// </summary>
+    /// <returns>Confirmation message.</returns>
+    [HttpDelete("clear")]
+    public async Task<IActionResult> ClearParcels()
+    {
+        var allParcels = await _context.Parcels.ToListAsync();
+        _context.Parcels.RemoveRange(allParcels);
+        await _context.SaveChangesAsync();
+
+        return Ok(new { message = "All parcels deleted." });
+    }
+
 }
