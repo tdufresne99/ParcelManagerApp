@@ -5,9 +5,10 @@ export interface ParcelModel {
   weight: string;
   status: string;
   deliveryAddress: string;
+  trackingNumber: string;
 }
 
-export type ParcelDtoModel = Omit<ParcelModel, 'id'>;
+export type ParcelDtoModel = Omit<ParcelModel, 'id' | 'trackingNumber'>;
 
 export enum ParcelStatus {
   Pending = 'Pending',

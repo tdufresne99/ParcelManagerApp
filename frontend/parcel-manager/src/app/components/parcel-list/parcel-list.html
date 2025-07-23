@@ -2,6 +2,7 @@
 <table>
   <thead>
     <tr>
+      <th>Tracking number</th>
       <th>Name</th>
       <th>Weight (lbs)</th>
       <th>Status</th>
@@ -14,6 +15,7 @@
       <td colspan="4" style="text-align: center">No parcels available.</td>
     </tr>
     <tr *ngFor="let parcel of GetParcels()">
+      <td>{{ parcel.trackingNumber }}</td>
       <td>{{ parcel.name }}</td>
       <td>{{ parcel.weight }}</td>
       <td>

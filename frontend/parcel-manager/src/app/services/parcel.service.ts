@@ -20,8 +20,8 @@ export class ParcelService {
     return this.http.get<ParcelModel>(`${this.apiUrl}/${id}`);
   }
 
-  createParcel(parcel: Omit<ParcelModel, 'id'>): Observable<ParcelModel> {
-    return this.http.post<ParcelModel>(this.apiUrl, parcel);
+  createParcel(parcel: ParcelDtoModel): Observable<ParcelDtoModel> {
+    return this.http.post<ParcelDtoModel>(this.apiUrl, parcel);
   }
 
   updateParcelStatus(parcelId: number, newStatus: string): Observable<void> {
