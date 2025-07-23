@@ -43,6 +43,7 @@ public class ParcelController : ControllerBase
         {
             Name = parcelDto.Name,
             Weight = parcelDto.Weight,
+            Recipient = parcelDto.Recipient,
             DeliveryAddress = parcelDto.DeliveryAddress,
             Status = "Pending",
             TrackingNumber = TrackingNumberGeneratorUtil.GenerateUniqueTrackingNumber(_context)
@@ -97,6 +98,7 @@ public class ParcelController : ControllerBase
 
         existingParcel.Name = parcel.Name;
         existingParcel.Weight = parcel.Weight;
+        existingParcel.Recipient = parcel.Recipient;
         existingParcel.DeliveryAddress = parcel.DeliveryAddress;
         existingParcel.Status = parcel.Status;
         await _context.SaveChangesAsync();
