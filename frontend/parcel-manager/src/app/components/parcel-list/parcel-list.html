@@ -3,11 +3,36 @@
   <thead>
     <tr>
       <th>Tracking number</th>
-      <th>Name</th>
-      <th>Weight (lbs)</th>
-      <th>Status</th>
-      <th>Recipient</th>
-      <th>Delivery Address</th>
+      <th (click)="onSort('name')" class="sortable">
+        Name
+          <span *ngIf="sortColumn === 'name'" class="sortable">
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        </th>
+      <th (click)="onSort('weight')" class="sortable">
+        Weight (lbs)
+          <span *ngIf="sortColumn === 'weight'">
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        </th>
+      <th (click)="onSort('status')" class="sortable">
+        Status
+          <span *ngIf="sortColumn === 'status'">
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        </th>
+      <th (click)="onSort('recipient')" class="sortable">
+        Recipient
+          <span *ngIf="sortColumn === 'recipient'">
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        </th>
+      <th (click)="onSort('deliveryAddress')" class="sortable">
+        Delivery Address
+          <span *ngIf="sortColumn === 'deliveryAddress'">
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        </th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -15,7 +40,7 @@
     <tr *ngIf="GetParcels().length === 0">
       <td colspan="4" style="text-align: center">No parcels available.</td>
     </tr>
-    <tr *ngFor="let parcel of GetParcels()">
+    <tr *ngFor="let parcel of sortedParcels">
       <td>
         <span class="tracking-id" (click)="copyTrackingNumber(parcel)">
           {{ copiedParcelId === parcel.id ? "Copied!" : parcel.trackingNumber }}

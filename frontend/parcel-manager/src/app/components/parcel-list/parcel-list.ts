@@ -5,6 +5,7 @@ import { ParcelModel, ParcelStatus } from '../../models/parcel.model';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 import { ConfirmDialogComponent } from '../confirm-dialog/confirm-dialog';
+import { sortByColumn, SortDirection } from '../../Utils/sort.util';
 
 @Component({
   selector: 'app-parcel-list',
@@ -21,6 +22,8 @@ export class ParcelList implements OnInit {
   copiedParcelId: number | null = null;
   showConfirmDialog: boolean = false;
   parcelIdToDelete: number | null = null;
+  sortColumn: keyof ParcelModel | null = null;
+  sortDirection: SortDirection = 'asc';
 
   constructor(private parcelService: ParcelService) {}
 
@@ -100,5 +103,25 @@ export class ParcelList implements OnInit {
         this.copyTimeout = null;
       }, 2000);
     });
+  }
+
+  onSort(column: keyof ParcelModel) {
+    if (this.sortColumn === column) {
+      if(this.sortDirection === 'asc') {
+        this.sortDirection = 'desc';
+      }
+      else if(this.sortDirection === 'desc') {
+        this.sortColumn = null;
+        this.sortDirection = 'asc';
+      }
+    } else {
+      this.sortColumn = column;
+      this.sortDirection = 'asc';
+    }
+  }
+
+  get sortedParcels(): ParcelModel[] {
+    if (!this.sortColumn) return this.parcels;
+    return sortByColumn(this.parcels, this.sortColumn, this.sortDirection, this.sortColumn === 'deliveryAddress');
   }
 }

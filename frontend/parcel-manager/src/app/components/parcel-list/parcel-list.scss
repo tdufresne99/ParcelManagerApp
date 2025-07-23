@@ -34,6 +34,14 @@ $transition-speed: 0.2s;
       background-color: $light-gray;
       color: $primary-color;
       font-weight: 600;
+
+      &.sortable {
+        cursor: pointer;
+
+        &:hover {
+          background-color: darken($light-gray, 5%);
+        }
+      }
     }
 
     tr:last-child td {
