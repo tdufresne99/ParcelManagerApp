@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParcelManager.API.Data;
 using ParcelManager.API.Models;
+using ParcelManager.API.Utils;
 
 namespace ParcelManager.API.Controllers;
 
@@ -36,8 +37,16 @@ public class ParcelController : ControllerBase
 
     // POST: api/parcel
     [HttpPost]
-    public async Task<ActionResult<Parcel>> AddParcel(Parcel parcel)
+    public async Task<ActionResult<Parcel>> AddParcel(CreateParcelDto parcelDto)
     {
+        var parcel = new Parcel
+        {
+            Name = parcelDto.Name,
+            Weight = parcelDto.Weight,
+            DeliveryAddress = parcelDto.DeliveryAddress,
+            Status = "Pending",
+            TrackingNumber = TrackingNumberGeneratorUtil.GenerateUniqueTrackingNumber(_context)
+        };
         _context.Parcels.Add(parcel);
         await _context.SaveChangesAsync();
 
