@@ -28,11 +28,14 @@
       </td>
       <td>{{ parcel.deliveryAddress }}</td>
       <td class="actions">
-        <button (click)="deleteParcel(parcel.id)" class="btn btn-danger btn-sm">
-          Delete
-        </button>
         <button (click)="editParcel(parcel.id)" class="btn btn-warning btn-sm">
           Edit
+        </button>
+        <button
+          (click)="openConfirmDialog(parcel.id)"
+          class="btn btn-danger btn-sm"
+        >
+          Delete
         </button>
       </td>
     </tr>
@@ -42,3 +45,12 @@
 <button routerLink="/add" class="btn btn-primary" type="button">
   Add Parcel
 </button>
+
+<app-confirm-dialog
+  *ngIf="showConfirmDialog"
+  (confirmed)="handleConfirm($event)"
+  message="Are you sure you want to delete this parcel? This action cannot be undone."
+  confirmButtonText="Delete"
+  cancelButtonText="Cancel"
+>
+</app-confirm-dialog>

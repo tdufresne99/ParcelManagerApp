@@ -4,11 +4,12 @@ import { ParcelService } from '../../services/parcel.service';
 import { ParcelModel, ParcelStatus } from '../../models/parcel.model';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { ConfirmDialogComponent } from "../confirm-dialog/confirm-dialog";
 
 @Component({
   selector: 'app-parcel-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule, FormsModule, ConfirmDialogComponent],
   templateUrl: './parcel-list.html',
   styleUrl: './parcel-list.scss',
 })
@@ -16,11 +17,13 @@ export class ParcelList implements OnInit {
   private parcels: ParcelModel[] = [];
   private statusOptions: string[] = Object.values(ParcelStatus);
 
+  showConfirmDialog: boolean = false;
+  parcelIdToDelete: number | null = null;
+
   constructor(private parcelService: ParcelService) {}
 
   ngOnInit(): void {
     this.loadParcels();
-
   }
 
   private loadParcels() {
@@ -36,6 +39,27 @@ export class ParcelList implements OnInit {
         next: () => {
           // Remove the deleted parcel from the list
           this.parcels = this.parcels.filter((p) => p.id !== id);
+        },
+        error: (err) => console.error('Delete failed', err),
+      });
+    }
+  }
+
+  openConfirmDialog(id: number) {
+    this.parcelIdToDelete = id;
+    this.showConfirmDialog = true;
+  }
+
+  handleConfirm(result: boolean) {
+    this.showConfirmDialog = false;
+
+    if (result && this.parcelIdToDelete !== null) {
+      this.parcelService.deleteParcel(this.parcelIdToDelete).subscribe({
+        next: () => {
+          this.parcels = this.parcels.filter(
+            (p) => p.id !== this.parcelIdToDelete
+          );
+          this.parcelIdToDelete = null;
         },
         error: (err) => console.error('Delete failed', err),
       });
