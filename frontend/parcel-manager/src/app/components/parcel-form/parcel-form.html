@@ -45,6 +45,16 @@
     />
   </div>
 
+  <div>
+    <label for="deliveryDate">Delivery date:</label>
+    <input
+      type="date"
+      id="deliveryDate"
+      name="deliveryDate"
+      [(ngModel)]="parcel.deliveryDate"
+    />
+  </div>
+
   <button type="submit" class="btn-submit" [disabled]="parcelForm.invalid">
     {{ parcelId ? "Update" : "Add" }} Parcel
   </button>

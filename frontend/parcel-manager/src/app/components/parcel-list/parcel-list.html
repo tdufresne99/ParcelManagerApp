@@ -13,34 +13,40 @@
       <th>Tracking number</th>
       <th (click)="onSort('name')" class="sortable">
         Name
-          <span *ngIf="sortColumn === 'name'" class="sortable">
-            {{ sortDirection === "asc" ? "▲" : "▼" }}
-          </span>
-        </th>
+        <span *ngIf="sortColumn === 'name'" class="sortable">
+          {{ sortDirection === "asc" ? "▲" : "▼" }}
+        </span>
+      </th>
       <th (click)="onSort('weight')" class="sortable">
         Weight (lbs)
-          <span *ngIf="sortColumn === 'weight'">
-            {{ sortDirection === "asc" ? "▲" : "▼" }}
-          </span>
-        </th>
+        <span *ngIf="sortColumn === 'weight'">
+          {{ sortDirection === "asc" ? "▲" : "▼" }}
+        </span>
+      </th>
       <th (click)="onSort('status')" class="sortable">
         Status
-          <span *ngIf="sortColumn === 'status'">
-            {{ sortDirection === "asc" ? "▲" : "▼" }}
-          </span>
-        </th>
+        <span *ngIf="sortColumn === 'status'">
+          {{ sortDirection === "asc" ? "▲" : "▼" }}
+        </span>
+      </th>
       <th (click)="onSort('recipient')" class="sortable">
         Recipient
-          <span *ngIf="sortColumn === 'recipient'">
-            {{ sortDirection === "asc" ? "▲" : "▼" }}
-          </span>
-        </th>
+        <span *ngIf="sortColumn === 'recipient'">
+          {{ sortDirection === "asc" ? "▲" : "▼" }}
+        </span>
+      </th>
       <th (click)="onSort('deliveryAddress')" class="sortable">
         Delivery Address
-          <span *ngIf="sortColumn === 'deliveryAddress'">
-            {{ sortDirection === "asc" ? "▲" : "▼" }}
-          </span>
-        </th>
+        <span *ngIf="sortColumn === 'deliveryAddress'">
+          {{ sortDirection === "asc" ? "▲" : "▼" }}
+        </span>
+      </th>
+      <th (click)="onSort('deliveryDate')" class="sortable">
+        Delivery Date
+        <span *ngIf="sortColumn === 'deliveryDate'">
+          {{ sortDirection === "asc" ? "▲" : "▼" }}
+        </span>
+      </th>
       <th>Actions</th>
     </tr>
   </thead>
@@ -68,6 +74,13 @@
       </td>
       <td>{{ parcel.recipient }}</td>
       <td>{{ parcel.deliveryAddress }}</td>
+      <td>
+        {{
+          parcel.deliveryDate
+            ? (parcel.deliveryDate | date : "yyyy-MM-dd")
+            : "N/A"
+        }}
+      </td>
       <td class="actions">
         <button (click)="editParcel(parcel.id)" class="btn btn-warning btn-sm">
           Edit

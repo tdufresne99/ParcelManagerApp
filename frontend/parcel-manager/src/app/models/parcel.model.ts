@@ -7,6 +7,7 @@ export interface ParcelModel {
   recipient: string;
   deliveryAddress: string;
   trackingNumber: string;
+  deliveryDate?: string;
 }
 
 export type ParcelDtoModel = Omit<ParcelModel, 'id' | 'trackingNumber'>;
