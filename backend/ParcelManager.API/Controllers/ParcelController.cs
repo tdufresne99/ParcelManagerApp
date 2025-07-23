@@ -55,6 +55,28 @@ public class ParcelController : ControllerBase
         return CreatedAtAction(nameof(GetParcels), new { id = parcel.Id }, parcel);
     }
 
+    // POST: api/parcel/import
+    [HttpPost("import")]
+    public async Task<IActionResult> ImportParcels([FromBody] List<ImportParcelDto> dtos)
+    {
+        var newParcels = dtos.Select(dto => new Parcel
+        {
+            TrackingNumber = TrackingNumberGeneratorUtil.GenerateUniqueTrackingNumber(_context),
+            Name = dto.Name,
+            Recipient = dto.Recipient,
+            DeliveryAddress = dto.DeliveryAddress,
+            Weight = dto.Weight,
+            Status = dto.Status,
+            DeliveryDate = dto.DeliveryDate
+        }).ToList();
+
+        _context.Parcels.AddRange(newParcels);
+        await _context.SaveChangesAsync();
+
+        return Ok(newParcels);
+    }
+
+
     // PUT: api/parcel/{id}/deliver
     [HttpPut("{id}/deliver")]
     public async Task<IActionResult> MarkAsDelivered(int id)

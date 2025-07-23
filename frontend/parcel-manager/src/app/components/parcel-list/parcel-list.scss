@@ -160,4 +160,20 @@ $transition-speed: 0.2s;
   .tracking-id::selection {
     background: transparent;
   }
+
+  .toast-message {
+  position: fixed;
+  top: 20px;
+  width: 100%;
+  background-color: #28a745;
+  color: white;
+  padding: 1rem 1rem;
+  border-radius: 6px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  font-size: 1rem;
+  z-index: 9999;
+  opacity: 0.95;
+  transition: opacity 0.3s ease;
+}
+
 }

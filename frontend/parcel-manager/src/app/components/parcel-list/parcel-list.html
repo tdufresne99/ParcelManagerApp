@@ -52,7 +52,7 @@
   </thead>
   <tbody>
     <tr *ngIf="GetParcels().length === 0">
-      <td colspan="4" style="text-align: center">No parcels available.</td>
+      <td colspan="8" style="text-align: center">No parcels available.</td>
     </tr>
     <tr *ngFor="let parcel of filteredParcels">
       <td>
@@ -108,3 +108,7 @@
   cancelButtonText="Cancel"
 >
 </app-confirm-dialog>
+
+<div *ngIf="successMessage" class="toast-message">
+  {{ successMessage }}
+</div>

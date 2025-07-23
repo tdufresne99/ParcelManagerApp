@@ -7,10 +7,21 @@ import { ParcelDtoModel, ParcelModel } from '../models/parcel.model';
   providedIn: 'root',
 })
 export class ParcelService {
-  
   private apiUrl = 'http://localhost:5100/api/Parcel';
 
   constructor(private http: HttpClient) {}
+
+  private successMessage: string | null = null;
+
+  setSuccessMessage(message: string) {
+    this.successMessage = message;
+  }
+
+  consumeSuccessMessage(): string | null {
+    const message = this.successMessage;
+    this.successMessage = null;
+    return message;
+  }
 
   getParcels(): Observable<ParcelModel[]> {
     return this.http.get<ParcelModel[]>(this.apiUrl);
@@ -22,6 +33,10 @@ export class ParcelService {
 
   createParcel(parcel: ParcelDtoModel): Observable<ParcelDtoModel> {
     return this.http.post<ParcelDtoModel>(this.apiUrl, parcel);
+  }
+
+  importParcels(parcels: ParcelDtoModel[]) {
+    return this.http.post(`${this.apiUrl}/import`, parcels);
   }
 
   updateParcelStatus(parcelId: number, newStatus: string): Observable<void> {

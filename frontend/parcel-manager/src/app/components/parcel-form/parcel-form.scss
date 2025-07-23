@@ -84,4 +84,40 @@ $spacing-unit: 1rem;
       }
     }
   }
+
+  .json-import {
+    padding: 1rem;
+    text-align: center;
+    cursor: pointer;
+
+    input[type="file"] {
+      display: none;
+    }
+
+    .import-btn {
+      font-size: 0.8rem;
+      font-weight: 500;
+      margin-top: 0.5rem;
+      background-color: $light-gray;
+      color: $dark-gray;
+      border: none;
+      border-radius: $border-radius;
+      padding: 0.5rem 1.5rem;
+      cursor: pointer;
+
+      &:hover {
+        background-color: darken($light-gray, 8%);
+      }
+    }
+  }
+}
+
+.error-message {
+  color: $danger-color;
+  text-align: center;
+  padding: 0.5rem 0.5rem;
+  font-size: 0.7rem;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
 }

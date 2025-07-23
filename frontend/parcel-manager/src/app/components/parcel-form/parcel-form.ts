@@ -2,7 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { ParcelService } from '../../services/parcel.service';
-import { ParcelDtoModel, ParcelModel, ParcelStatus } from '../../models/parcel.model';
+import {
+  ParcelDtoModel,
+  ParcelModel,
+  ParcelStatus,
+} from '../../models/parcel.model';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -28,6 +32,8 @@ export class ParcelForm implements OnInit {
     private route: ActivatedRoute
   ) {}
 
+  jsonImportError: string | null = null;
+
   ngOnInit(): void {
     this.parcelId = this.route.snapshot.paramMap.get('id') ?? undefined;
 
@@ -47,7 +53,9 @@ export class ParcelForm implements OnInit {
         error: (err) => {
           // Optionally, you could redirect or show an error message
           console.error('Failed to load parcel', err);
-          this.router.navigate(['/'], { queryParams: { error: 'Failed to load parcel' } });
+          this.router.navigate(['/'], {
+            queryParams: { error: 'Failed to load parcel' },
+          });
         },
       });
     }
@@ -68,11 +76,46 @@ export class ParcelForm implements OnInit {
       this.parcelService.createParcel(this.parcel).subscribe({
         next: () => {
           console.log('Parcel created!');
-          this.router.navigate(['/']);
+          this.router.navigate(['/']).then(() => {
+            this.parcelService.setSuccessMessage('Parcel created successfully!');
+          });
         },
         error: (err) => console.error('Failed to create parcel', err),
       });
     }
+  }
+
+  onFileSelected(event: Event) {
+    const file = (event.target as HTMLInputElement).files?.[0];
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        const json = JSON.parse(reader.result as string);
+
+        this.jsonImportError = null;
+
+        this.parcelService.importParcels(json).subscribe({
+          next: () => {
+            console.log('Import successful');
+            this.router.navigate(['/']).then(() => {
+              this.parcelService.setSuccessMessage(
+                'Parcels imported successfully!'
+              );
+            });
+          },
+          error: (err) => {
+            this.jsonImportError = 'Server error.';
+            console.error(err);
+          },
+        });
+      } catch (err) {
+        this.jsonImportError = 'Invalid JSON file.';
+        console.error('JSON parsing error:', err);
+      }
+    };
+    reader.readAsText(file);
   }
 
   onCancel() {

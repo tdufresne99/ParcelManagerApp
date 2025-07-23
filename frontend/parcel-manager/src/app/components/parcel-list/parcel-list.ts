@@ -30,6 +30,11 @@ export class ParcelList implements OnInit {
 
   ngOnInit(): void {
     this.loadParcels();
+
+    const message = this.parcelService.consumeSuccessMessage();
+    if (message) {
+      this.showSuccess(message);
+    }
   }
 
   private loadParcels() {
@@ -43,7 +48,6 @@ export class ParcelList implements OnInit {
     if (confirm('Are you sure you want to delete this parcel?')) {
       this.parcelService.deleteParcel(id).subscribe({
         next: () => {
-          // Remove the deleted parcel from the list
           this.parcels = this.parcels.filter((p) => p.id !== id);
         },
         error: (err) => console.error('Delete failed', err),
@@ -73,7 +77,6 @@ export class ParcelList implements OnInit {
   }
 
   public editParcel(parcelId: number) {
-    // Navigate to the update form with the parcel ID
     window.location.href = `/update/${parcelId}`;
   }
 
@@ -142,5 +145,14 @@ export class ParcelList implements OnInit {
         parcel.recipient?.toLowerCase().includes(term) ||
         parcel.deliveryAddress?.toLowerCase().includes(term)
     );
+  }
+
+  successMessage: string | null = null;
+
+  showSuccess(message: string) {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = null;
+    }, 3000);
   }
 }
