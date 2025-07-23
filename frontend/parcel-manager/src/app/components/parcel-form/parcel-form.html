@@ -51,10 +51,10 @@
       type="date"
       id="deliveryDate"
       name="deliveryDate"
-      [(ngModel)]="parcel.deliveryDate"
+      [ngModel]="parcel.deliveryDate | date: 'yyyy-MM-dd'"
     />
   </div>
-
+  
   <button type="submit" class="btn-submit" [disabled]="parcelForm.invalid">
     {{ parcelId ? "Update" : "Add" }} Parcel
   </button>
@@ -67,11 +67,11 @@
       Import JSON file
     </button>
     <input
-      #fileInput
-      type="file"
-      accept=".json"
-      (change)="onFileSelected($event)"
-      hidden
+    #fileInput
+    type="file"
+    accept=".json"
+    (change)="onFileSelected($event)"
+    hidden
     />
   </div>
   <div *ngIf="jsonImportError" class="error-message">

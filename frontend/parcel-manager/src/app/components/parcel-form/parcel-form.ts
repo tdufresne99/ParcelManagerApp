@@ -24,6 +24,7 @@ export class ParcelForm implements OnInit {
     status: ParcelStatus.Pending,
     recipient: '',
     deliveryAddress: '',
+    deliveryDate: ''
   };
 
   constructor(
@@ -48,6 +49,7 @@ export class ParcelForm implements OnInit {
             status: existingParcel.status,
             recipient: existingParcel.recipient,
             deliveryAddress: existingParcel.deliveryAddress,
+            deliveryDate: existingParcel.deliveryDate,
           };
         },
         error: (err) => {
