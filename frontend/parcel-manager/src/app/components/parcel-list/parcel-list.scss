@@ -133,24 +133,47 @@ $transition-speed: 0.2s;
     }
   }
 
-  button[routerLink] {
-    display: block;
-    margin: 2rem auto 0;
-    padding: 0.75rem 1.5rem;
-    font-size: 1rem;
-    font-weight: bold;
+  .bottom-action-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  // pointer-events: none;
+  z-index: 10;
+
+  .gradient-overlay {
+    height: 88px;
+    background: linear-gradient(
+      to top,
+      rgba(255, 255, 255, 1),
+      rgba(255, 255, 255, 0)
+    );
+    // pointer-events: none;
+  }
+
+  .add-parcel-button {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px;
     background-color: $primary-color;
     color: white;
+    font-weight: bold;
+    padding: 1rem 1.5rem;
     border: none;
-    border-radius: $border-radius;
+    border-radius: 6px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     cursor: pointer;
-    transition: background-color $transition-speed;
-    width: 222px;
+    pointer-events: auto;
+    transition: background-color 0.3s ease;
 
     &:hover {
       background-color: darken($primary-color, 8%);
     }
   }
+}
+
 
   .tracking-id {
     cursor: pointer;
