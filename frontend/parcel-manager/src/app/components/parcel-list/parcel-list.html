@@ -1,4 +1,12 @@
 <h2>Parcel List</h2>
+<input
+  type="text"
+  id="search"
+  name="search"
+  placeholder="Search parcels..."
+  [(ngModel)]="searchTerm"
+  class="search-input"
+/>
 <table>
   <thead>
     <tr>
@@ -40,7 +48,7 @@
     <tr *ngIf="GetParcels().length === 0">
       <td colspan="4" style="text-align: center">No parcels available.</td>
     </tr>
-    <tr *ngFor="let parcel of sortedParcels">
+    <tr *ngFor="let parcel of filteredParcels">
       <td>
         <span class="tracking-id" (click)="copyTrackingNumber(parcel)">
           {{ copiedParcelId === parcel.id ? "Copied!" : parcel.trackingNumber }}

@@ -24,6 +24,7 @@ export class ParcelList implements OnInit {
   parcelIdToDelete: number | null = null;
   sortColumn: keyof ParcelModel | null = null;
   sortDirection: SortDirection = 'asc';
+  searchTerm = '';
 
   constructor(private parcelService: ParcelService) {}
 
@@ -107,10 +108,9 @@ export class ParcelList implements OnInit {
 
   onSort(column: keyof ParcelModel) {
     if (this.sortColumn === column) {
-      if(this.sortDirection === 'asc') {
+      if (this.sortDirection === 'asc') {
         this.sortDirection = 'desc';
-      }
-      else if(this.sortDirection === 'desc') {
+      } else if (this.sortDirection === 'desc') {
         this.sortColumn = null;
         this.sortDirection = 'asc';
       }
@@ -122,6 +122,25 @@ export class ParcelList implements OnInit {
 
   get sortedParcels(): ParcelModel[] {
     if (!this.sortColumn) return this.parcels;
-    return sortByColumn(this.parcels, this.sortColumn, this.sortDirection, this.sortColumn === 'deliveryAddress');
+    return sortByColumn(
+      this.parcels,
+      this.sortColumn,
+      this.sortDirection,
+      this.sortColumn === 'deliveryAddress'
+    );
+  }
+
+  get filteredParcels(): ParcelModel[] {
+    const term = this.searchTerm.trim().toLowerCase();
+    if (!term) {
+      return this.sortedParcels;
+    }
+    return this.sortedParcels.filter(
+      (parcel) =>
+        parcel.trackingNumber?.toLowerCase().includes(term) ||
+        parcel.name?.toLowerCase().includes(term) ||
+        parcel.recipient?.toLowerCase().includes(term) ||
+        parcel.deliveryAddress?.toLowerCase().includes(term)
+    );
   }
 }

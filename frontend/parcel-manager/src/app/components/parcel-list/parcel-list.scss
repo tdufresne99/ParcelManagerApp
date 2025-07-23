@@ -1,4 +1,4 @@
-@import 'variables';
+@import "variables";
 $border-radius: 6px;
 $spacing-unit: 1rem;
 $transition-speed: 0.2s;
@@ -13,6 +13,21 @@ $transition-speed: 0.2s;
     margin: 1.5rem;
     text-align: center;
     font-size: 1.8rem;
+  }
+
+  input {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+
+    &:focus {
+      outline: none;
+      border-color: $primary-color;
+    }
   }
 
   table {
@@ -137,11 +152,11 @@ $transition-speed: 0.2s;
   }
 
   .tracking-id {
-  cursor: pointer;
-  transition: color 0.3s ease;
-}
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
 
-.tracking-id::selection {
-  background: transparent;
-}
+  .tracking-id::selection {
+    background: transparent;
+  }
 }
