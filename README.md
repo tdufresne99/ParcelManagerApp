@@ -34,7 +34,7 @@
 ## 📂 Structure du projet
 
 ```bash
-📁 parcel-manager/
+📁 parcelManagerApp/
 ├── 📁 backend/         # API ASP.NET Core
 │   └── ...
 ├── 📁 frontend/        # Application Angular
