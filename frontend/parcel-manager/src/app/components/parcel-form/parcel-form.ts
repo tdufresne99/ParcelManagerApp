@@ -79,6 +79,9 @@ export class ParcelForm implements OnInit {
         next: () => {
           console.log('Parcel updated!');
           this.router.navigate(['/']);
+          this.parcelService.setSuccessMessage(
+              'Parcel updated successfully!'
+            );
         },
         error: (err) => console.error('Failed to update parcel', err),
       });

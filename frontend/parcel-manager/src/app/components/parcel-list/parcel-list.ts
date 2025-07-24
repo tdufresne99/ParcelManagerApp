@@ -25,6 +25,7 @@ export class ParcelList implements OnInit {
   sortColumn: keyof ParcelModel | null = null;
   sortDirection: SortDirection = 'asc';
   searchTerm = '';
+  feedbackMessage: string | null = null;
 
   constructor(private parcelService: ParcelService) {}
 
@@ -33,7 +34,7 @@ export class ParcelList implements OnInit {
 
     const message = this.parcelService.consumeSuccessMessage();
     if (message) {
-      this.showSuccess(message);
+      this.showFeedback(message);
     }
   }
 
@@ -70,6 +71,7 @@ export class ParcelList implements OnInit {
             (p) => p.id !== this.parcelIdToDelete
           );
           this.parcelIdToDelete = null;
+          this.showFeedback('Parcel deleted successfully.');
         },
         error: (err) => console.error('Delete failed', err),
       });
@@ -82,7 +84,10 @@ export class ParcelList implements OnInit {
 
   onStatusChange(parcel: ParcelModel, newStatus: string) {
     this.parcelService.updateParcelStatus(parcel.id, newStatus).subscribe({
-      next: () => (parcel.status = newStatus),
+      next: () => {
+        (parcel.status = newStatus),
+          this.showFeedback('Parcel status updated successfully.');
+      },
       error: (err) => console.error('Failed to update status', err),
     });
   }
@@ -147,12 +152,10 @@ export class ParcelList implements OnInit {
     );
   }
 
-  successMessage: string | null = null;
-
-  showSuccess(message: string) {
-    this.successMessage = message;
+  showFeedback(message: string) {
+    this.feedbackMessage = message;
     setTimeout(() => {
-      this.successMessage = null;
+      this.feedbackMessage = null;
     }, 3000);
   }
 }

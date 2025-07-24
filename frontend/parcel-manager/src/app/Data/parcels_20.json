@@ -1,0 +1,162 @@
+[
+  {
+    "name": "Wireless Bluetooth Headphones",
+    "recipient": "Emma Johnson",
+    "deliveryAddress": "123 Maple Avenue",
+    "weight": 1.2,
+    "deliveryDate": "2025-07-25",
+    "status": "Delivered"
+  },
+  {
+    "name": "Smart Home Speaker",
+    "recipient": "Noah Davis",
+    "deliveryAddress": "321 Cedar Road",
+    "weight": 2.5,
+    "deliveryDate": "2025-07-28",
+    "status": "Cancelled"
+  },
+  {
+    "name": "Laptop Stand",
+    "recipient": "Olivia Martinez",
+    "deliveryAddress": "456 Oak Street",
+    "weight": 3.2,
+    "deliveryDate": "2025-07-29",
+    "status": "Shipped"
+  },
+  {
+    "name": "Portable Bluetooth Speaker",
+    "recipient": "Liam Garcia",
+    "deliveryAddress": "789 Pine Lane",
+    "weight": 0.9,
+    "deliveryDate": "2025-07-30",
+    "status": "Pending"
+  },
+  {
+    "name": "Fitness Tracker Watch",
+    "recipient": "Sophia Wilson",
+    "deliveryAddress": "246 Elm Street",
+    "weight": 0.8,
+    "deliveryDate": "2025-07-31",
+    "status": "Delivered"
+  },
+  {
+    "name": "Portable Phone Charger",
+    "recipient": "James Anderson",
+    "deliveryAddress": "135 Willow Way",
+    "weight": 0.5,
+    "deliveryDate": "2025-08-01",
+    "status": "In Transit"
+  },
+  {
+    "name": "Noise Cancelling Earbuds",
+    "recipient": "Isabella Thomas",
+    "deliveryAddress": "864 Aspen Court",
+    "weight": 0.7,
+    "deliveryDate": "2025-08-02",
+    "status": "Cancelled"
+  },
+  {
+    "name": "Ceramic Coffee Mug",
+    "recipient": "Benjamin Taylor",
+    "deliveryAddress": "579 Chestnut Street",
+    "weight": 1.0,
+    "deliveryDate": "2025-08-03",
+    "status": "Delivered"
+  },
+  {
+    "name": "Gaming Mouse",
+    "recipient": "Mia Moore",
+    "deliveryAddress": "753 Cypress Circle",
+    "weight": 0.9,
+    "deliveryDate": "2025-08-04",
+    "status": "Shipped"
+  },
+  {
+    "name": "Adjustable Office Chair",
+    "recipient": "Elijah Jackson",
+    "deliveryAddress": "482 Redwood Avenue",
+    "weight": 25.6,
+    "deliveryDate": "2025-08-05",
+    "status": "In Transit"
+  },
+  {
+    "name": "Yoga Mat",
+    "recipient": "Charlotte White",
+    "deliveryAddress": "398 Magnolia Drive",
+    "weight": 4.5,
+    "deliveryDate": "2025-08-06",
+    "status": "Delivered"
+  },
+  {
+    "name": "Wireless Keyboard",
+    "recipient": "Lucas Harris",
+    "deliveryAddress": "620 Maplewood Lane",
+    "weight": 1.5,
+    "deliveryDate": "2025-08-07",
+    "status": "Pending"
+  },
+  {
+    "name": "Electric Toothbrush",
+    "recipient": "Amelia Martin",
+    "deliveryAddress": "174 Fir Street",
+    "weight": 0.7,
+    "deliveryDate": "2025-08-08",
+    "status": "Delivered"
+  },
+  {
+    "name": "Bluetooth Car Adapter",
+    "recipient": "Evelyn Perez",
+    "deliveryAddress": "295 Dogwood Road",
+    "weight": 0.6,
+    "deliveryDate": "2025-08-10",
+    "status": "Shipped"
+  },
+  {
+    "name": "Smartphone Tripod",
+    "recipient": "Logan Clark",
+    "deliveryAddress": "523 Willowbrook Street",
+    "weight": 1.1,
+    "deliveryDate": "2025-08-11",
+    "status": "In Transit"
+  },
+  {
+    "name": "Outdoor Camping Lantern",
+    "recipient": "Harper Lewis",
+    "deliveryAddress": "132 Pinecrest Lane",
+    "weight": 3.9,
+    "deliveryDate": "2025-08-12",
+    "status": "Delivered"
+  },
+  {
+    "name": "Insulated Lunch Box",
+    "recipient": "Jacob Robinson",
+    "deliveryAddress": "918 Maple Grove Road",
+    "weight": 1.7,
+    "deliveryDate": "2025-08-13",
+    "status": "Cancelled"
+  },
+  {
+    "name": "Electric Grill",
+    "recipient": "Ella Walker",
+    "deliveryAddress": "274 Birchwood Drive",
+    "weight": 12.3,
+    "deliveryDate": "2025-08-14",
+    "status": "Shipped"
+  },
+  {
+    "name": "Portable Air Purifier",
+    "recipient": "Aiden Hall",
+    "deliveryAddress": "647 Cedar Hill Street",
+    "weight": 2.8,
+    "deliveryDate": "2025-08-15",
+    "status": "In Transit"
+  },
+  {
+    "name": "Wireless Charging Pad",
+    "recipient": "Sofia Young",
+    "deliveryAddress": "385 Oakwood Avenue",
+    "weight": 0.4,
+    "deliveryDate": "2025-08-16",
+    "status": "Delivered"
+  }
+]

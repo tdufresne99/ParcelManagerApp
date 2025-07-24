@@ -1,0 +1,42 @@
+[
+  {
+    "name": "USB-C Laptop Docking Station",
+    "recipient": "Chloe Bennett",
+    "deliveryAddress": "127 Cedarwood Drive",
+    "weight": 2.2,
+    "deliveryDate": "2025-08-15",
+    "status": "Shipped"
+  },
+  {
+    "name": "Non-stick Frying Pan Set",
+    "recipient": "Owen Ramirez",
+    "deliveryAddress": "843 Pine Needle Road",
+    "weight": 6.4,
+    "deliveryDate": "2025-08-16",
+    "status": "Delivered"
+  },
+  {
+    "name": "Wireless Charging Mouse Pad",
+    "recipient": "Layla Hughes",
+    "deliveryAddress": "390 Maplewood Crescent",
+    "weight": 1.3,
+    "deliveryDate": "2025-08-17",
+    "status": "Pending"
+  },
+  {
+    "name": "Mini Portable Air Conditioner",
+    "recipient": "Caleb Foster",
+    "deliveryAddress": "612 Willow Path",
+    "weight": 7.1,
+    "deliveryDate": "2025-08-18",
+    "status": "In Transit"
+  },
+  {
+    "name": "Digital Alarm Clock with Radio",
+    "recipient": "Aria Simmons",
+    "deliveryAddress": "299 Birch Meadow Lane",
+    "weight": 1.6,
+    "deliveryDate": "2025-08-19",
+    "status": "Cancelled"
+  }
+]

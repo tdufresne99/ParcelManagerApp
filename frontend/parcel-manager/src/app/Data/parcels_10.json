@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Electric Hand Mixer",
+    "recipient": "Gabriel Myers",
+    "deliveryAddress": "741 Chestnut Ridge Road",
+    "weight": 2.8,
+    "deliveryDate": "2025-08-20",
+    "status": "Delivered"
+  },
+  {
+    "name": "Bluetooth Sleep Headphones",
+    "recipient": "Scarlett Price",
+    "deliveryAddress": "194 Oakview Avenue",
+    "weight": 0.9,
+    "deliveryDate": "2025-08-21",
+    "status": "Shipped"
+  },
+  {
+    "name": "Indoor Plant Growing Kit",
+    "recipient": "Julian Rivera",
+    "deliveryAddress": "355 Maple Shade Court",
+    "weight": 3.3,
+    "deliveryDate": "2025-08-22",
+    "status": "Pending"
+  },
+  {
+    "name": "Smart Light Bulbs (4-Pack)",
+    "recipient": "Violet Cox",
+    "deliveryAddress": "128 Pine Hollow Drive",
+    "weight": 1.1,
+    "deliveryDate": "2025-08-23",
+    "status": "In Transit"
+  },
+  {
+    "name": "Cordless Hair Clippers",
+    "recipient": "Isaac Murphy",
+    "deliveryAddress": "906 Birch Hill Lane",
+    "weight": 1.5,
+    "deliveryDate": "2025-08-24",
+    "status": "Delivered"
+  },
+  {
+    "name": "Foldable Laptop Stand",
+    "recipient": "Penelope Bell",
+    "deliveryAddress": "212 Cedar Ridge Drive",
+    "weight": 2.1,
+    "deliveryDate": "2025-08-25",
+    "status": "Shipped"
+  },
+  {
+    "name": "Essential Oil Diffuser",
+    "recipient": "Levi Ward",
+    "deliveryAddress": "377 Spruce Valley Road",
+    "weight": 1.8,
+    "deliveryDate": "2025-08-26",
+    "status": "Pending"
+  },
+  {
+    "name": "Wireless Home Security Camera",
+    "recipient": "Camila Ross",
+    "deliveryAddress": "590 Willow Springs Way",
+    "weight": 2.7,
+    "deliveryDate": "2025-08-27",
+    "status": "Cancelled"
+  },
+  {
+    "name": "Rechargeable LED Work Light",
+    "recipient": "Hudson Powell",
+    "deliveryAddress": "431 Pine View Court",
+    "weight": 3.6,
+    "deliveryDate": "2025-08-28",
+    "status": "In Transit"
+  },
+  {
+    "name": "Smartphone Gimbal Stabilizer",
+    "recipient": "Luna Bailey",
+    "deliveryAddress": "144 Maple Hill Drive",
+    "weight": 2.4,
+    "deliveryDate": "2025-08-29",
+    "status": "Delivered"
+  }
+]
