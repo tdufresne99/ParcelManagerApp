@@ -13,86 +13,104 @@
       <th>Tracking number</th>
       <th (click)="onSort('name')" class="sortable">
         Name
-        <span *ngIf="sortColumn === 'name'" class="sortable">
-          {{ sortDirection === "asc" ? "▲" : "▼" }}
-        </span>
+        @if (sortColumn === 'name') {
+          <span>
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        }
       </th>
       <th (click)="onSort('weight')" class="sortable">
         Weight (lbs)
-        <span *ngIf="sortColumn === 'weight'">
+        @if (sortColumn === 'weight') {
+        <span>
           {{ sortDirection === "asc" ? "▲" : "▼" }}
         </span>
+      }
       </th>
       <th (click)="onSort('status')" class="sortable">
         Status
-        <span *ngIf="sortColumn === 'status'">
+        @if(sortColumn === 'status') {
+        <span>
           {{ sortDirection === "asc" ? "▲" : "▼" }}
         </span>
+      }
       </th>
       <th (click)="onSort('recipient')" class="sortable">
         Recipient
-        <span *ngIf="sortColumn === 'recipient'">
-          {{ sortDirection === "asc" ? "▲" : "▼" }}
-        </span>
+        @if (sortColumn === 'recipient') {
+          <span>
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        }
       </th>
       <th (click)="onSort('deliveryAddress')" class="sortable">
         Delivery Address
-        <span *ngIf="sortColumn === 'deliveryAddress'">
-          {{ sortDirection === "asc" ? "▲" : "▼" }}
-        </span>
+        @if (sortColumn === 'deliveryAddress') {
+          <span>
+            {{ sortDirection === "asc" ? "▲" : "▼" }}
+          </span>
+        }
       </th>
       <th (click)="onSort('deliveryDate')" class="sortable">
         Delivery Date
-        <span *ngIf="sortColumn === 'deliveryDate'">
+        @if (sortColumn === 'deliveryDate') {
+          <span>
           {{ sortDirection === "asc" ? "▲" : "▼" }}
         </span>
+      }
       </th>
       <th>Actions</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngIf="GetParcels().length === 0">
-      <td colspan="8" style="text-align: center">No parcels available.</td>
-    </tr>
-    <tr *ngFor="let parcel of filteredParcels">
-      <td>
-        <span class="tracking-id" (click)="copyTrackingNumber(parcel)">
-          {{ copiedParcelId === parcel.id ? "Copied!" : parcel.trackingNumber }}
-        </span>
-      </td>
-      <td>{{ parcel.name }}</td>
-      <td>{{ parcel.weight }}</td>
-      <td>
-        <select
-          [ngModel]="parcel.status"
-          (ngModelChange)="onStatusChange(parcel, $event)"
-        >
-          <option *ngFor="let status of GetStatusOptions()" [value]="status">
-            {{ status }}
-          </option>
-        </select>
-      </td>
-      <td>{{ parcel.recipient }}</td>
-      <td>{{ parcel.deliveryAddress }}</td>
-      <td>
-        {{
-          parcel.deliveryDate
-            ? (parcel.deliveryDate | date : "yyyy-MM-dd")
-            : "N/A"
-        }}
-      </td>
-      <td class="actions">
-        <button (click)="editParcel(parcel.id)" class="btn btn-warning btn-sm">
-          Edit
-        </button>
-        <button
-          (click)="openConfirmDialog(parcel.id)"
-          class="btn btn-danger btn-sm"
-        >
-          Delete
-        </button>
-      </td>
-    </tr>
+    @if (GetParcels().length === 0) {
+      <tr>
+        <td colspan="8" style="text-align: center">No parcels available.</td>
+      </tr>
+    }
+    @for (parcel of filteredParcels; track parcel.id) {
+      <tr>
+        <td>
+          <span class="tracking-id" (click)="copyTrackingNumber(parcel)">
+            {{ copiedParcelId === parcel.id ? "Copied!" : parcel.trackingNumber }}
+          </span>
+        </td>
+        <td>{{ parcel.name }}</td>
+        <td>{{ parcel.weight }}</td>
+        <td>
+          <select
+            [ngModel]="parcel.status"
+            (ngModelChange)="onStatusChange(parcel, $event)"
+          >
+            @for (status of GetStatusOptions(); track status) {
+              <option [value]="status">
+                {{ status }}
+              </option>
+            }
+          </select>
+        </td>
+        <td>{{ parcel.recipient }}</td>
+        <td>{{ parcel.deliveryAddress }}</td>
+        <td>
+          {{
+            parcel.deliveryDate
+              ? (parcel.deliveryDate | date : "yyyy-MM-dd")
+              : "N/A"
+          }}
+        </td>
+        <td class="actions">
+          <button (click)="editParcel(parcel.id)" class="btn btn-warning btn-sm">
+            Edit
+          </button>
+          <button
+            (click)="openConfirmDialog(parcel.id)"
+            class="btn btn-danger btn-sm"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+    }
   </tbody>
 </table>
 
@@ -101,15 +119,18 @@
   <button class="add-parcel-button" routerLink="/add">+ Add Parcel</button>
 </div>
 
-<app-confirm-dialog
-  *ngIf="showConfirmDialog"
-  (confirmed)="handleConfirm($event)"
-  message="Are you sure you want to delete this parcel? This action cannot be undone."
-  confirmButtonText="Delete"
-  cancelButtonText="Cancel"
->
-</app-confirm-dialog>
+@if (showConfirmDialog) {
+  <app-confirm-dialog
+    (confirmed)="handleConfirm($event)"
+    message="Are you sure you want to delete this parcel? This action cannot be undone."
+    confirmButtonText="Delete"
+    cancelButtonText="Cancel"
+  >
+  </app-confirm-dialog>
+}
 
-<div *ngIf="feedbackMessage" class="toast-message">
-  {{ feedbackMessage }}
-</div>
+@if (feedbackMessage) {
+  <div class="toast-message">
+    {{ feedbackMessage }}
+  </div>
+}
